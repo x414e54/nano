@@ -31,7 +31,10 @@
 #define z_Byte															UInt8
 
 
-
+// libgd
+#define HAVE_LIBJPEG 1
+#define HAVE_LIBPNG  1
+#define HAVE_LIBTIFF 1
 
 
 //============================================================================

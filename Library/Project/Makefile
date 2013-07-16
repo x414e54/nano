@@ -1,5 +1,4 @@
-CXX     = /opt/lsb/bin/lsbc++
-C	= /opt/lsb/bin/lsbcc
+CXX     = gcc 
 AR      = ar
 ARFLAGS = rcs
 
@@ -148,7 +147,22 @@ SRCS_COMPONENTS =                                                               
         ../Source/Nano/Internal/Components/tero.co.uk/tero_des.cpp                   \
         ../Source/Nano/Internal/Components/udp.github.com/json.c                     \
         ../Source/Nano/Internal/Components/unicode.org/ConvertUTF.c                  \
-
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_bmp.c			     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_jpeg.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_png.c			     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_tiff.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_gif_in.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_gif_out.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd.c			     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gdhelpers.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_security.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_io.c			     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_io_file.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_io_dp.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_color.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gdtables.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_topal.c		     \
+	../Source/Nano/Internal/Components/libgd-2.1.0/gd_nnquant.c		     \
 
 OBJS_NANO       = $(patsubst %.c,%.o,       $(patsubst %.cpp,%.o,       $(SRCS_NANO)                    ))
 OBJS_COMPONENTS = $(patsubst %.c,%.o,       $(patsubst %.cpp,%.o,       $(SRCS_COMPONENTS)              ))
@@ -209,13 +223,13 @@ clean:
 	$(CXX) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -c $< -o $@
 
 .c.o:
-	$(C) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -c $< -o $@
+	$(CXX) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -c $< -o $@
 
 %.depends: %.cpp
 	$(CXX) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -M -c $< > $@
 
 %.depends: %.c
-	$(C) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -M -c $< > $@
+	$(CXX) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -M -c $< > $@
 
 -include $(DEPENDENCIES)
 

@@ -1,5 +1,5 @@
-CXX     = /opt/lsb/bin/lsbc++
-LDFLAGS = -lstdc++ -lpthread -lrt -ldl -lm -lz
+CXX     = gcc
+LDFLAGS = -lstdc++ -lpthread -lz -lrt -ldl -lm -ltiff -lpng -ljpeg
 AR      = ar
 ARFLAGS = rcs
 

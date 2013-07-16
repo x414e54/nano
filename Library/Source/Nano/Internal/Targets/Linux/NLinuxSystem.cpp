@@ -753,7 +753,6 @@ NBroadcaster *NTargetSystem::GetLocaleBroadcaster(const NString &/*theID*/)
 {	static NBroadcaster		sBroadcaster;
 
 
-
 	// Get the broadcaster
 	//
 	// For now, all locales share the same broadcaster.
