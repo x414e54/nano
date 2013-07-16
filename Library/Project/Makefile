@@ -1,4 +1,5 @@
-CXX     = gcc
+CXX     = /opt/lsb/bin/lsbc++
+C	= /opt/lsb/bin/lsbcc
 AR      = ar
 ARFLAGS = rcs
 
@@ -147,18 +148,6 @@ SRCS_COMPONENTS =                                                               
         ../Source/Nano/Internal/Components/tero.co.uk/tero_des.cpp                   \
         ../Source/Nano/Internal/Components/udp.github.com/json.c                     \
         ../Source/Nano/Internal/Components/unicode.org/ConvertUTF.c                  \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/adler32.c                      \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/compress.c                     \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/crc32.c                        \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/deflate.c                      \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/gzio.c                         \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/infback.c                      \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/inffast.c                      \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/inflate.c                      \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/inftrees.c                     \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/trees.c                        \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/uncompr.c                      \
-        ../Source/Nano/Internal/Components/zlib_1.2.3/zutil.c                        \
 
 
 OBJS_NANO       = $(patsubst %.c,%.o,       $(patsubst %.cpp,%.o,       $(SRCS_NANO)                    ))
@@ -190,7 +179,6 @@ FLAGS_INCLUDE =                                                                 
         -I"../Source/Nano/Internal/Components/tero.co.uk"                            \
         -I"../Source/Nano/Internal/Components/udp.github.com"                        \
         -I"../Source/Nano/Internal/Components/unicode.org"                           \
-        -I"../Source/Nano/Internal/Components/zlib_1.2.3"                            \
         -I"../Source/Nano/Internal/Components/libgd-2.1.0"                           \
         -I"../Source/Nano/Internal/Targets"                                          \
         -I"../Source/Nano/Internal/Targets/Linux"                                    \
@@ -221,13 +209,13 @@ clean:
 	$(CXX) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -c $< -o $@
 
 .c.o:
-	$(CXX) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -c $< -o $@
+	$(C) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -c $< -o $@
 
 %.depends: %.cpp
 	$(CXX) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -M -c $< > $@
 
 %.depends: %.c
-	$(CXX) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -M -c $< > $@
+	$(C) $(FLAGS_NANO) $(FLAGS_INCLUDE) $(FLAGS_WARN) -M -c $< > $@
 
 -include $(DEPENDENCIES)
 

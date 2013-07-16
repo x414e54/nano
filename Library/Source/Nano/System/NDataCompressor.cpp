@@ -14,7 +14,11 @@
 //============================================================================
 //		Include files
 //----------------------------------------------------------------------------
+#if NN_TARGET_LINUX
+#include <zlib.h>
+#else
 #include "nano_zlib.h"
+#endif
 
 #include "NByteSwap.h"
 #include "NDataCompressor.h"

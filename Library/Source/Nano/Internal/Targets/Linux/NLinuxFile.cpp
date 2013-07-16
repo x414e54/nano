@@ -1145,8 +1145,8 @@ void *NTargetFile::MapFetch(NFileRef theFile, NMapAccess theAccess, UInt64 theOf
 	// For each file we maintain a table of mapped pointers to their originating
 	// pages, allowing us to unmap the correct page when the pointer is discarded.
 	pagePerm  = PROT_READ;
-	pageFlags = MAP_FILE | MAP_SHARED;
-	pageSize  = getpagesize();
+	pageFlags = MAP_SHARED;
+	pageSize  = sysconf(_SC_PAGE_SIZE);
 
 	if (theAccess != kNAccessRead)
 		pagePerm |= PROT_WRITE;
